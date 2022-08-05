@@ -2,17 +2,19 @@
 #include <iostream>
 using namespace std;
 
-unsigned int Polynomial::getMaxDegree() {
+int Polynomial::MaxDegree = 0;
+
+ int Polynomial::getMaxDegree() {
 	return MaxDegree;
 }
 double Polynomial::getDegree(bool what) const {
 	int TempDegree = 0;
 	if (what) {
-		for (int i = 0; i < this->Degree; i++)
+		for (int i = 0; i <this->Degree; i++)
 		{
 			if (this->values[i] != 0)
 			{
-				TempDegree = i + 1;
+				TempDegree = (i + 1);
 			}
 		}
 		return TempDegree;
@@ -25,13 +27,17 @@ double Polynomial::getCoeff(int index) const {
 	return this->values[index];
 }
 void Polynomial::setCoeff(int degree, double value) {
-	this->values[degree - 1] = value;
+	this->values[degree] = value;
+	if (degree > MaxDegree) {
+		MaxDegree = degree;
+	}
 }
 void Polynomial::print() {
-	if (this->Degree > 0) {
+	cout << "Polynomial= ";
+	if (this->Degree > 0 && this->getDegree(true) !=0) {
 		for (int i = 0; i < this->getDegree(true); i++) {
-			cout << values[i] << "X^" + i;
-			if (i != this->Degree - 1) {
+			cout << this->values[i] << "X^" << i;
+			if (i != this->getDegree(true) - 1) {
 				cout << "+";
 			}
 		}
@@ -39,5 +45,7 @@ void Polynomial::print() {
 	}
 	else {
 		cout << "0";
+		cout << endl;
 	}
+	
 }
