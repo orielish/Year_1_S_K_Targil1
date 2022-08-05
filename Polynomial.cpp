@@ -3,6 +3,7 @@
 using namespace std;
 
 int Polynomial::MaxDegree = 0;
+//need to be fixed
 
  int Polynomial::getMaxDegree() {
 	return MaxDegree;

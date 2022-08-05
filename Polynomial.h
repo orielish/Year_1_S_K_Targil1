@@ -24,7 +24,7 @@ public:
 		this->Degree = degree;
 		
 	}
-	static ` int getMaxDegree();
+	static int getMaxDegree();
 	double getDegree(bool) const ;
 	double getCoeff(int) const ;
 	void setCoeff(int, double);
